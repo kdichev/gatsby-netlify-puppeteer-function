@@ -6,14 +6,7 @@ import os from "os";
 
 const fs = require("fs");
 
-console.log(os);
-console.log(os.tmpdir());
-
-fs.readdirSync(os.tmpdir()).forEach((file) => {
-  console.log(file);
-});
-
-fs.readdirSync(os.homedir()).forEach((file) => {
+fs.readdirSync("/opt").forEach((file) => {
   console.log(file);
 });
 
