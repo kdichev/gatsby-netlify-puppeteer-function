@@ -6,7 +6,8 @@ import os from "os";
 
 const fs = require("fs");
 
-console.log(process.env.$HOME);
+console.log(os);
+console.log(os.homedir());
 
 export default async function createPdf(
   _: GatsbyFunctionRequest,
