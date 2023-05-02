@@ -2,7 +2,6 @@ import { GatsbyFunctionRequest, GatsbyFunctionResponse } from "gatsby";
 const chromium = require("@sparticuz/chromium");
 const puppeteer = require("puppeteer-core");
 const localPuppeteer = require("puppeteer");
-import { join } from "path";
 const pup = true ? localPuppeteer : puppeteer;
 
 export default async function createPdf(
@@ -14,9 +13,7 @@ export default async function createPdf(
     : pup.launch({
         args: chromium.args,
         defaultViewport: chromium.defaultViewport,
-        executablePath: await chromium.executablePath(
-          join(__dirname, ".cache", "puppeteer")
-        ),
+        executablePath: await chromium.executablePath(),
         headless: chromium.headless,
       }));
 
