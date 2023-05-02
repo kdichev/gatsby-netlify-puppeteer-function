@@ -10,9 +10,7 @@ export default async function createPdf(
   const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath(
-      join(__dirname, ".cache", "puppeteer")
-    ),
+    executablePath: await chromium.executablePath(),
     headless: chromium.headless,
   });
 
