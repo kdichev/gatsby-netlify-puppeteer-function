@@ -7,12 +7,11 @@ export default async function createPdf(
   _: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
 ) {
+  console.log(__dirname, process.cwd(), process.env.PUPPETEER_CACHE_DIR);
   const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath(
-      "/home/sbx_user1051/.cache/puppeteer"
-    ),
+    executablePath: await chromium.executablePath(),
     headless: chromium.headless,
   });
 
