@@ -13,7 +13,7 @@ export default async function createPdf(
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
     executablePath: await chromium.executablePath(
-      path.join(os.homedir(), ".cache", "puppeteer")
+      path.join(os.homedir(), ".cache", "bin")
     ),
     headless: chromium.headless,
   });
