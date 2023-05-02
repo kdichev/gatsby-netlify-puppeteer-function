@@ -4,6 +4,12 @@ const puppeteer = require("puppeteer-core");
 import path from "path";
 import os from "os";
 
+const fs = require("fs");
+
+fs.readdirSync(path.join(os.homedir())).forEach((file) => {
+  console.log(file);
+});
+
 export default async function createPdf(
   _: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
@@ -12,9 +18,7 @@ export default async function createPdf(
   const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath(
-      path.join(os.homedir(), ".cache", "bin")
-    ),
+    executablePath: await chromium.executablePath(),
     headless: chromium.headless,
   });
 
