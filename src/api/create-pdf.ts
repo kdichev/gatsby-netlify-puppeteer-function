@@ -6,9 +6,7 @@ import os from "os";
 
 const fs = require("fs");
 
-fs.readdirSync(path.join(os.homedir())).forEach((file) => {
-  console.log(file);
-});
+console.log(process.env.$HOME);
 
 export default async function createPdf(
   _: GatsbyFunctionRequest,
