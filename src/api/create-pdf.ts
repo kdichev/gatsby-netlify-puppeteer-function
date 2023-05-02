@@ -7,7 +7,15 @@ import os from "os";
 const fs = require("fs");
 
 console.log(os);
-console.log(os.homedir());
+console.log(os.tmpdir());
+
+fs.readdirSync(os.tmpdir()).forEach((file) => {
+  console.log(file);
+});
+
+fs.readdirSync(os.homedir()).forEach((file) => {
+  console.log(file);
+});
 
 export default async function createPdf(
   _: GatsbyFunctionRequest,
