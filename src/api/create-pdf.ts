@@ -1,11 +1,15 @@
 import { GatsbyFunctionRequest, GatsbyFunctionResponse } from "gatsby";
-const puppeteer = require("puppeteer");
+const chromium = require("chrome-aws-lambda");
 
 export default async function createPdf(
   _: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
 ) {
-  const browser = await puppeteer.launch({ headless: "new" });
+  const browser = await chromium.puppeteer.launch({
+    args: await chromium.args,
+    executablePath: await chromium.executablePath,
+    headless: true,
+  });
   const page = await browser.newPage();
   await page.goto("https://www.example.com", {
     waitUntil: "networkidle0",
