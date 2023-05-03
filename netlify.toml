@@ -1,4 +1,4 @@
 [[plugins]]
 package = "@netlify/plugin-gatsby"
-[functions."__api"]
+[functions]
 external_node_modules = ["@sparticuz/chromium"]
