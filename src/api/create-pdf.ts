@@ -3,6 +3,7 @@ const chromium = require("@sparticuz/chromium");
 const puppeteer = require("puppeteer-core");
 import fs from "fs";
 import os from "os";
+const dirTree = require("directory-tree");
 
 const glob = require("glob");
 
@@ -10,12 +11,14 @@ export default async function createPdf(
   _: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
 ) {
-  console.log("process.cwd()", process.cwd());
-  fs.readdir(process.cwd() + "/.cache/functions", (err, files) => {
-    files.forEach((file) => {
-      console.log(file);
-    });
-  });
+  // console.log("process.cwd()", process.cwd());
+  // fs.readdir(process.cwd() + "/.cache/functions", (err, files) => {
+  //   files.forEach((file) => {
+  //     console.log(file);
+  //   });
+  // });
+  const tree = dirTree(process.cwd());
+  console.log(tree);
   const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
