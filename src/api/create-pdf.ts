@@ -6,7 +6,6 @@ export default async function createPdf(
   _: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
 ) {
-  console.log("AWS_EXECUTION_ENV", process.env.AWS_EXECUTION_ENV);
   const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
