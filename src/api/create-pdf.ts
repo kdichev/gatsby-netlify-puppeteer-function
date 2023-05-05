@@ -25,5 +25,5 @@ export default async function createPdf(
   const pdf = await page.pdf({ format: "A4" });
   console.log(pdf);
   await browser.close();
-  res.status(200).json({ success: true, tree });
+  res.status(200).json({ success: true, tree, pdf });
 }
