@@ -11,8 +11,10 @@ export default async function createPdf(
   res: GatsbyFunctionResponse
 ) {
   console.log("process.cwd()", process.cwd());
-  glob("**/*.br", {}, (err, files) => {
-    console.log(files);
+  fs.readdir(process.cwd(), (err, files) => {
+    files.forEach((file) => {
+      console.log(file);
+    });
   });
   const browser = await puppeteer.launch({
     args: chromium.args,
