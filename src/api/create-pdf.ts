@@ -4,12 +4,16 @@ const puppeteer = require("puppeteer-core");
 import fs from "fs";
 import os from "os";
 
+const glob = require("glob");
+
 export default async function createPdf(
   _: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
 ) {
   console.log("process.cwd()", process.cwd());
-
+  glob(__dirname + "/**/chromium.br", {}, (err, files) => {
+    console.log(files);
+  });
   const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
