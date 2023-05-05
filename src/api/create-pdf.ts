@@ -2,6 +2,8 @@ import { GatsbyFunctionRequest, GatsbyFunctionResponse } from "gatsby";
 const puppeteer = require("puppeteer-core");
 const chromium = require("@sparticuz/chromium-min");
 
+console.log(process.env.AWS_LAMBDA_JS_RUNTIME);
+
 export default async function createPdf(
   _: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
