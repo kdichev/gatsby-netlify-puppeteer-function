@@ -1,18 +1,11 @@
 import { GatsbyFunctionRequest, GatsbyFunctionResponse } from "gatsby";
 const puppeteer = require("puppeteer-core");
 const chromium = require("@sparticuz/chromium-min");
-import os from "os";
-const fs = require("fs");
 
 export default async function createPdf(
   _: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
 ) {
-  console.log("runtime", process.env.AWS_LAMBDA_JS_RUNTIME);
-
-  fs.readdirSync(os.tmpdir()).forEach((file) => {
-    console.log(file);
-  });
   const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
