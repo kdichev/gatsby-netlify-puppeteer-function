@@ -11,7 +11,7 @@ export default async function createPdf(
   res: GatsbyFunctionResponse
 ) {
   console.log("process.cwd()", process.cwd());
-  fs.readdir(process.cwd() + "/.cache", (err, files) => {
+  fs.readdir(process.cwd() + "/.cache/functions", (err, files) => {
     files.forEach((file) => {
       console.log(file);
     });
