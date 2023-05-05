@@ -5,7 +5,9 @@ const IndexPage = () => {
   const getPdf = async () => {
     setLoading(true);
     // gatsby function
-    await fetch("./api/create-pdf");
+    await fetch("./api/create-pdf").then(async (response) =>
+      console.log(await response.json())
+    );
     // netlify function
     await fetch("/.netlify/functions/test");
     setLoading(false);
