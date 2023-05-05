@@ -4,7 +4,9 @@ const IndexPage = () => {
   const [loading, setLoading] = React.useState(false);
   const getPdf = async () => {
     setLoading(true);
-    // await fetch("./api/create-pdf");
+    // gatsby function
+    await fetch("./api/create-pdf");
+    // netlify function
     await fetch("/.netlify/functions/test");
     setLoading(false);
   };
