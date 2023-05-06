@@ -6,6 +6,12 @@ export default async function createPdf(
   _: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
 ) {
+  console.log(process.env["AWS_LAMBDA_JS_RUNTIME"]);
+  console.log(/^nodejs/.test(process.env["AWS_LAMBDA_JS_RUNTIME"]) === true);
+  console.log(
+    process.env["AWS_LAMBDA_JS_RUNTIME"] &&
+      /^nodejs/.test(process.env["AWS_LAMBDA_JS_RUNTIME"]) === true
+  );
   const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
