@@ -8,17 +8,11 @@ export default async function createPdf(
   _: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
 ) {
-  console.log(process.env.LD_LIBRARY_PATH);
-  console.log(process.env["AWS_LAMBDA_JS_RUNTIME"]);
-  console.log(/^nodejs/.test(process.env["AWS_LAMBDA_JS_RUNTIME"]) === true);
-  console.log(
-    process.env["AWS_LAMBDA_JS_RUNTIME"] &&
-      /^nodejs/.test(process.env["AWS_LAMBDA_JS_RUNTIME"]) === true
-  );
-  console.log(os.tmpdir());
-  console.log(process.cwd());
-  const tree = dirTree(os.tmpdir());
-  const tree1 = dirTree(process.cwd());
+  var env = process.env;
+
+  Object.keys(env).forEach(function (key) {
+    console.log("export " + key + '="' + env[key] + '"');
+  });
   try {
     const browser = await puppeteer.launch({
       args: chromium.args,
@@ -38,9 +32,7 @@ export default async function createPdf(
     await browser.close();
     res.status(200).json({ success: true, pdf });
   } catch (e) {
-    res.status(200).json({
-      tree,
-      tree1,
+    res.status(500).json({
       error: {
         message: e instanceof Error ? e.message : "some error happened",
       },
