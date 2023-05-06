@@ -6,6 +6,7 @@ export default async function createPdf(
   _: GatsbyFunctionRequest,
   res: GatsbyFunctionResponse
 ) {
+  console.log(process.env.LD_LIBRARY_PATH);
   console.log(process.env["AWS_LAMBDA_JS_RUNTIME"]);
   console.log(/^nodejs/.test(process.env["AWS_LAMBDA_JS_RUNTIME"]) === true);
   console.log(
