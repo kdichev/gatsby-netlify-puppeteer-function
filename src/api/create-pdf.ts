@@ -38,9 +38,9 @@ export default async function createPdf(
   } catch (e) {
     res.status(200).json({
       tree,
-      error: JSON.stringify({
+      error: {
         message: e instanceof Error ? e.message : "some error happened",
-      }),
+      },
     });
   }
 }
