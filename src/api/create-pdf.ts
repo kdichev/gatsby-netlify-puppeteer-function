@@ -16,7 +16,9 @@ export default async function createPdf(
       /^nodejs/.test(process.env["AWS_LAMBDA_JS_RUNTIME"]) === true
   );
   console.log(os.tmpdir());
+  console.log(process.cwd());
   const tree = dirTree(os.tmpdir());
+  const tree1 = dirTree(process.cwd());
   try {
     const browser = await puppeteer.launch({
       args: chromium.args,
@@ -38,6 +40,7 @@ export default async function createPdf(
   } catch (e) {
     res.status(200).json({
       tree,
+      tree1,
       error: {
         message: e instanceof Error ? e.message : "some error happened",
       },
