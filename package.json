@@ -7,8 +7,9 @@
     "build": "gatsby build"
   },
   "dependencies": {
+    "@sparticuz/chromium": "110.0.0",
+    "puppeteer-core": "19.6.3",
     "gatsby": "5.9.0",
-    "puppeteer": "20.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
