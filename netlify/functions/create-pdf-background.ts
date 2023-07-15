@@ -1,11 +1,7 @@
-import { GatsbyFunctionRequest, GatsbyFunctionResponse } from "gatsby";
 const chromium = require("@sparticuz/chromium");
 const puppeteer = require("puppeteer-core");
 
-export default async function createPdf(
-  _: GatsbyFunctionRequest,
-  res: GatsbyFunctionResponse
-) {
+const handler = async () => {
   const browser = await puppeteer.launch({
     args: chromium.args,
     defaultViewport: chromium.defaultViewport,
@@ -21,6 +17,9 @@ export default async function createPdf(
   });
   const pdf = await page.pdf({ format: "A4" });
   console.log(pdf);
-  await browser.close();
-  res.status(200).json({ success: true, pdf });
-}
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ ok: true, image: pdf }),
+  };
+};
+export { handler };

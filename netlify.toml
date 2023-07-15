@@ -1,2 +1,4 @@
 [[plugins]]
-package = "@netlify/plugin-gatsby"
+    package = "@netlify/plugin-gatsby"
+[functions]
+    included_files = ["./node_modules/@sparticuz/chromium/bin/**"]
